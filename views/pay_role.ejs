@@ -1,0 +1,51 @@
+<%- include('header') %>
+
+<div class="signup-form">
+  <h2><%=title%></h2>
+  <br />
+  <br />
+  <br />
+  <br />
+  <form action="/pay-role" method="post" class="form-horizontal">
+    <% if(success !=''){ %>
+    <p style="text-align: center; color: green"><%= success%></p>
+    <% }%>
+    <div class="row">
+      <div class="col-8 offset-4">
+        <h2>Add employee salery</h2>
+      </div>
+    </div>
+    <select class="form-control" name="pay_details">
+      <option value="">Chose Employee name</option>
+      <% if(recods){ recods.forEach(function(row){ %>
+      <option value="<%= row.Ename%>"><%= row.Ename %></option>
+      <% })}%>
+    </select>
+
+    <br />
+    <br />
+    <div class="form-group row">
+      <label class="col-form-label col-4">pay role status</label>
+      <div class="col-8">
+        <input
+          type="text"
+          placeholder="pay or not"
+          class="form-control"
+          name="pay"
+          required="required"
+        />
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <div class="col-8 offset-4">
+        <button type="submit" class="btn btn-primary btn-lg">update</button>
+      </div>
+    </div>
+    <div class="text-center">
+      <a href="/view-Allpay">View ALL Employee and salery </a>
+    </div>
+  </form>
+</div>
+
+<%- include('footer') %>

@@ -1,0 +1,33 @@
+<%- include('header') %>
+
+<table class="table">
+  <h2>Job Role List</h2>
+  <br />
+  <thead>
+    <tr>
+      <th>Empoyee name</th>
+      <th>pay status</th>
+      <th>Date</th>
+
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if(recods){ recods.forEach(function(row){ %>
+    <tr>
+      
+      <td><%=(row.employee_name) ? row.employee_name.Ename : 'N/A'%></td>
+      <td><%=row.pay_role_statu%></td>
+      <td><%=row.date%></td>
+
+      <td>
+        <a class="btn btn-danger btn-xs" href="/view-Allpay/delete/<%=row._id%>"
+          ><i class="fa fa-trash"></i
+        ></a>
+      </td>
+    </tr>
+    <% })}%>
+  </tbody>
+</table>
+
+<%- include('footer') %>

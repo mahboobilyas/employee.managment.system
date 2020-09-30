@@ -1,0 +1,34 @@
+<%- include('header') %>
+
+<table class="table">
+  <h2>Job Role List</h2>
+  <br />
+
+  <thead>
+    <tr>
+      <th>Job Role name</th>
+
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if(recods) 
+    { recods.forEach(function(row){ 
+      %>
+    <tr>
+      <td><%= row.username %></td>
+
+      <td>
+        <a class="btn btn-primary btn-xs" href="/view-jobRole/edit/<%= row._id %>"
+          ><i class="fa fa-edit"></i
+        ></a>
+        <a class="btn btn-danger btn-xs" href="/view-jobRole/delete/<%= row._id %>"
+          ><i class="fa fa-trash"></i
+        ></a>
+      </td>
+    </tr>
+    <% }) } %>
+  </tbody>
+</table>
+
+<%- include('footer') %>

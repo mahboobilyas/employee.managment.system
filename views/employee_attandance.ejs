@@ -1,0 +1,38 @@
+<%- include('header') %>
+
+<div class="signup-form">
+  <h2><%=title%></h2>
+  <br />
+  <br />
+  <br />
+  <br />
+  <form action="/employee-attandance" method="post" class="form-horizontal">
+    <% if(success !=''){ %>
+    <p style="text-align: center; color: green"><%= success%></p>
+    <%}%>
+    <div class="row">
+      <div class="col-8 offset-4">
+        <h2>Employee attandance</h2>
+      </div>
+    </div>
+    <select class="form-control" name="attandance_details">
+      <option value="">Chose Employee name</option>
+      <% if(recods){ recods.forEach(function(row){ %>
+      <option value="<%= row.Ename%>"><%= row.Ename%></option>
+      <% })}%>
+    </select>
+
+    <div class="form-group row">
+      <div class="col-8 offset-4">
+        <button type="submit" class="btn btn-primary btn-lg">
+          ADD today attandance
+        </button>
+      </div>
+    </div>
+    <div class="text-center">
+      <a href="/view-allemployee">View recently attandance </a>
+    </div>
+  </form>
+</div>
+
+<%- include('footer') %>

@@ -1,0 +1,68 @@
+<%- include('header') %>
+<!-- ---------------------------------------------- -->
+<link
+  rel="stylesheet"
+  href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"
+/>
+<!-- ---------------------------------------------- -->
+
+<table class="table">
+  <h2>Employee list</h2>
+  <br />
+
+  <thead>
+    <tr>
+      <th>Employee name</th>
+      <th>Employee Job Role</th>
+      <th>Employee Email</th>
+      <th>Employee city</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if(recods){ recods.forEach(function(row){ %>
+    <tr>
+      <td><%= row.Ename %></td>
+      <td><%= row.job.username%></td>
+      <td><%= row.Eemail %></td>
+      <td><%= row.city %></td>
+
+      <td>
+        <a
+          class="btn btn-primary btn-xs"
+          href="/view-allemployee/edit/<%= row._id %>"
+          ><i class="fa fa-edit"></i
+        ></a>
+        <a
+          class="btn btn-danger btn-xs"
+          href="/view-allemployee/delete/<%= row._id %>"
+          ><i class="fa fa-trash"></i
+        ></a>
+      </td>
+    </tr>
+    <% }) }%>
+  </tbody>
+</table>
+<% if (pages > 0) { %>
+<ul class="pagination text-center">
+  <% if (current == 1) { %>
+  <li class="disabled"><a>First</a></li>
+  <% } else { %>
+  <li><a href="/view-allemployee/1">First</a></li>
+  <% } %> <% var i = (Number(current) > 5 ? Number(current) - 4 : 1) %> <% if (i
+  !== 1) { %>
+  <li class="disabled"><a>...</a></li>
+  <% } %> <% for (; i <= (Number(current) + 4) && i <= pages; i++) { %> <% if (i
+  == current) { %>
+  <li class="active"><a><%= i %></a></li>
+  <% } else { %>
+  <li><a href="/view-allemployee/<%= i %>"><%= i %></a></li>
+  <% } %> <% if (i == Number(current) + 4 && i < pages) { %>
+  <li class="disabled"><a>...</a></li>
+  <% } %> <% } %> <% if (current == pages) { %>
+  <li class="disabled"><a>Last</a></li>
+  <% } else { %>
+  <li><a href="/view-allemployee/<%= pages %>">Last</a></li>
+  <% } %>
+</ul>
+<% } %> <%- include('footer') %>
