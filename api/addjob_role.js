@@ -9,6 +9,7 @@ var checkAuth = require("../api/middleware/auth")
 
 
 router.get("/get-jobrole",checkAuth, jobrole.getalljobrole)
+router.get("/get-jobrole",checkAuth, jobrole.getalljobrole)
 router.post("/add-jobrole",checkAuth, jobrole.postalljobrole);
 router.put("/add-update-jobrole/:id", jobrole.putalljobrole);
 router.patch("/update-jobrole", jobrole.patchalljobrole);
